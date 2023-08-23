@@ -1,0 +1,74 @@
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+CIS 1200 HW07 README
+PennKey: nglan
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+
+============
+=: Task 2 :=
+============
+
+- Do you plan on creating any new classes in your design? If so, what classes
+  are you making, what do they store, and what behaviors do they have?
+    I plan on making 2 new classes: Client class storing the integer ID and changeable nickname of each client, and
+    Channel class storing the Client owner and privacy option.
+    Client class can get ID/nickname and can set nickname. Channel class can get owner name, privacy, users, add or
+    remove users, and check if a client is in channel.
+
+- How do you plan on storing what users are registered on the server?
+    The ServerModel class will have a method that returns a TreeMap of all registered users.
+
+- How do you plan on keeping track of which user has which user ID, considering
+  the fact that the user's nickname can change over the course of the program?
+    Client class accounts for this.
+
+- How do you plan on storing what users are in a channel?
+    Channel class will store clients in a TreeSet.
+
+- How do you plan on keeping track of which user is the owner of each channel?
+    Each channel is created with an owner's String name, so Channel class will have a getOwner method.
+
+- Justify your choice of collections (Set, Map, or List) for the
+  collections you use in your design.
+    For now, I think a TreeSet is optimal for users in a channel because there is no duplicate + ordering is good to
+    have.
+
+============
+=: Task 3 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+    I realized that a Client class would be a bit redundant since all the commands have arguments as int ID and nickname
+    already. ServerModel will store all the registered clients in a TreeMap with key as their ID and value as nickname
+    (because value is changeable not key) this will account for keeping track of which user has which user ID,
+    considering the fact that the user's nickname can change over the course of the program.
+
+============
+=: Task 4 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+    No I did not make any changes.
+
+============
+=: Task 5 :=
+============
+
+- How do you plan on keeping track of which channels are invite-only?
+    My Channel class has a data field of isPrivate and has a method to get the privacy state of the channel. The TreeMap
+    in ServerModel has value = Channel so this way we know if each value is invite-only or not.
+
+- Will you make any changes to your work from before in order to make
+  implementing invite-only channels easier?
+    Yes I will have to alter the task 4 methods since it didn't account for privacy, specifically the createChannel and
+    joinChannel methods.
+
+============
+=: Task 6 :=
+============
+
+- Did you have to make any changes to your design in Task 6? Why?
+    I did not make any change to my design.
+
+- If you were to redo this assignment, what changes (if any) would you make in
+  how you designed your code?
+    I might try doing the assignment without having to create a new class of Channel.
